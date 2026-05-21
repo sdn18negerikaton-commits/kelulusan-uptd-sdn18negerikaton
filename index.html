@@ -26,12 +26,12 @@ margin:30px 0;
 }
 
 .header h1{
-font-size:40px;
+font-size:38px;
 margin-bottom:10px;
 }
 
 .header p{
-font-size:20px;
+font-size:18px;
 opacity:.95;
 }
 
@@ -42,13 +42,6 @@ padding:30px;
 border-radius:25px;
 box-shadow:0 15px 35px rgba(0,0,0,.3);
 margin-top:20px;
-}
-
-#countdown{
-font-size:30px;
-font-weight:bold;
-color:#1e3a8a;
-margin-top:15px;
 }
 
 input{
@@ -71,10 +64,6 @@ cursor:pointer;
 margin-top:15px;
 }
 
-button:hover{
-background:#1d4ed8;
-}
-
 .sukses{
 margin-top:20px;
 padding:25px;
@@ -86,7 +75,6 @@ color:white;
 footer{
 margin-top:40px;
 opacity:.85;
-font-size:15px;
 }
 </style>
 </head>
@@ -116,13 +104,7 @@ NIP. 197604082009021002
 
 <div class="card">
 
-<h2 id="judul">
-Pengumuman Belum Dibuka
-</h2>
-
-<div id="countdown"></div>
-
-<div id="cekArea" style="display:none">
+<h2>🎓 Cek Kelulusan</h2>
 
 <input
 id="nisn"
@@ -138,8 +120,6 @@ Cek Kelulusan
 
 </div>
 
-</div>
-
 <footer>
 © 2026 UPTD SDN 18 Negeri Katon
 </footer>
@@ -147,10 +127,6 @@ Cek Kelulusan
 </div>
 
 <script>
-
-const buka =
-new Date("2025-01-01");
-
 
 const data={
 
@@ -180,69 +156,13 @@ status:"LULUS"
 
 };
 
-
-function update(){
-
-let now=new Date();
-
-let s=buka-now;
-
-if(s<=0){
-
-document
-.getElementById("judul")
-.innerHTML="🎓 Cek Kelulusan";
-
-document
-.getElementById("countdown")
-.style.display="none";
-
-document
-.getElementById("cekArea")
-.style.display="block";
-
-return;
-
-}
-
-let h=Math.floor(
-s/1000/60/60/24
-);
-
-let j=Math.floor(
-(s/1000/60/60)%24
-);
-
-let m=Math.floor(
-(s/1000/60)%60
-);
-
-let d=Math.floor(
-(s/1000)%60
-);
-
-document
-.getElementById("countdown")
-.innerHTML=
-
-`${h} Hari ${j} Jam ${m} Menit ${d} Detik`;
-
-}
-
-setInterval(update,1000);
-
-update();
-
-
 function cek(){
 
-let n=
-document
+let n=document
 .getElementById("nisn")
 .value.trim();
 
-let h=
-document
+let h=document
 .getElementById("hasil");
 
 if(data[n]){
@@ -251,21 +171,13 @@ h.innerHTML=`
 
 <div class="sukses">
 
-<h1>
-🎉 SELAMAT 🎉
-</h1>
+<h1>🎉 SELAMAT 🎉</h1>
 
-<h2>
-${data[n].nama}
-</h2>
+<h2>${data[n].nama}</h2>
 
-<p>
-Kelas ${data[n].kelas}
-</p>
+<p>Kelas ${data[n].kelas}</p>
 
-<h1>
-${data[n].status}
-</h1>
+<h1>${data[n].status}</h1>
 
 <p>
 Selamat atas kelulusan Anda.
@@ -283,7 +195,7 @@ Semoga sukses ke jenjang berikutnya.
 }else{
 
 h.innerHTML=
-"<h3 style='color:red'>Data tidak ditemukan</h3>";
+"<h3 style='color:red'>❌ Data tidak ditemukan</h3>";
 
 }
 
