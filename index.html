@@ -83,9 +83,28 @@ const data = {
 };
 
 function update(){
+function update(){
+
 if(new Date()>=buka){
-document.getElementById("judul").innerHTML="Cek Kelulusan";
-document.getElementById("cek").style.display="block";
+
+document.getElementById("judul").innerHTML=
+"🎓 Cek Kelulusan";
+
+document.getElementById("cek").style.display=
+"block";
+
+}else{
+
+let sisa=buka-new Date();
+
+let hari=Math.floor(sisa/86400000);
+
+document.getElementById("judul").innerHTML=
+"⏳ Pengumuman dibuka "+hari+" hari lagi";
+
+}
+
+}
 }
 }
 setInterval(update,1000);
