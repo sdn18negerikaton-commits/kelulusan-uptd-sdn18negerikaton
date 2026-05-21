@@ -1,91 +1,158 @@
 <!DOCTYPE html>
-<<img src="logo.png" class="logo">>
+<html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Pengumuman Kelulusan UPTD SDN 18 Negeri Katon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
+
 body{
+margin:0;
+padding:0;
 font-family:Arial,sans-serif;
-background:#0f172a;
+background:linear-gradient(135deg,#04142f,#08285d);
 color:white;
 text-align:center;
-padding:30px
 }
+
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.logo{
+width:140px;
+margin-top:20px;
+border-radius:50%;
+box-shadow:0 0 30px rgba(255,255,255,.4);
+}
+
 .card{
 background:white;
 color:black;
-max-width:600px;
-margin:auto;
-padding:20px;
-border-radius:20px
+padding:30px;
+border-radius:25px;
+margin-top:25px;
+box-shadow:0 10px 40px rgba(0,0,0,.3);
 }
+
 input{
-width:90%;
-padding:12px;
-margin:10px;
+width:80%;
+padding:16px;
+font-size:20px;
+border-radius:15px;
+border:2px solid #ddd;
 }
+
 button{
-padding:12px 20px;
-background:#2563eb;
-color:white;
+padding:16px 30px;
+background:#1565c0;
 border:none;
-border-radius:10px
+color:white;
+font-size:18px;
+border-radius:15px;
+cursor:pointer;
+margin-top:15px;
 }
+
+button:hover{
+background:#0d47a1;
+}
+
+#hasil{
+margin-top:20px;
+}
+
+.sukses{
+background:linear-gradient(135deg,#16a34a,#2563eb);
+padding:30px;
+border-radius:25px;
+color:white;
+box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+
+footer{
+margin-top:50px;
+padding:30px;
+font-size:18px;
+opacity:.9;
+}
+
+.count{
+font-size:35px;
+font-weight:bold;
+margin:20px;
+}
+
 </style>
 </head>
-<footer style="
-<footer style="
-margin-top:50px;
-padding:20px;
-opacity:.8;
-font-size:14px">
 
-UPTD SDN 18 NEGERI KATON<br>
-Kepala Sekolah: SUJOKO S.Pd SD<br>
-NIP: 197604082009021002<br><br>
+<body>
 
-© 2026 Portal Pengumuman Kelulusan
+<div class="container">
+
+<img class="logo"
+src="https://i.imgur.com/J0mM6o5.png">
+
+<h1>🎓 UPTD SDN 18 NEGERI KATON</h1>
+
+<h2>Portal Pengumuman Kelulusan</h2>
+
+<p>Tahun Ajaran 2025/2026</p>
+
+<p>
+Kepala Sekolah: SUJOKO S.Pd SD
+<br>
+NIP:197604082009021002
+</p>
+
+
+<div class="card">
+
+<h2 id="judul">
+Pengumuman Belum Dibuka
+</h2>
+
+<div id="countdown"></div>
+
+<div id="cek" style="display:none">
+
+<input
+id="nisn"
+placeholder="Masukkan NISN">
+
+<br>
+
+<button onclick="cek()">
+Cek Kelulusan
+</button>
+
+<div id="hasil"></div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+©2026 Portal Pengumuman Kelulusan
+<br>
+UPTD SDN 18 NEGERI KATON
 
 </footer>
 
-UPTD SDN 18 NEGERI KATON<br>
-
-© 2026 Portal Pengumuman Kelulusan
-
-</footer><body>
-
-<div style="margin-bottom:30px">
-
-<img
-src="https://raw.githubusercontent.com/sdn18negerikaton-commits/kelulusan-uptd-sdn18negerikaton/main/logo.png"
-width="130"
-style="
-background:white;
-padding:8px;
-border-radius:50%;
-box-shadow:0 0 20px rgba(255,255,255,.3);
-margin-bottom:15px">
-
-<h1 style="
-font-size:36px;
-margin:10px">
-
-<div class="card">
-<h2 id="judul">Pengumuman belum dibuka</h2>
-
-<div id="cek" style="display:none;">
-<input id="nisn" placeholder="Masukkan NISN">
-<br>
-<button onclick="cek()">Cek Kelulusan</button>
-<div id="hasil"></div>
 </div>
-</div>
+
 
 <script>
 
-const buka = new Date("2025-01-01T08:00:00");
+const buka=new Date("2026-06-05T08:00:00")
 
-const data = {
+const data={
 
 "132795839":{
 nama:"AISY FITHRIYAH NURAINI",
@@ -103,82 +170,127 @@ status:"LULUS"
 nama:"Aqila Jihan Balqis",
 kelas:"6",
 status:"LULUS"
+},
+
+"3134779420":{
+nama:"Candra Halim",
+kelas:"6",
+status:"LULUS"
 }
 
-};
+}
+
+
 
 function update(){
 
-if(new Date()>=buka){
+let sekarang=new Date()
 
-document.getElementById("judul").innerHTML=
-"🎓 Cek Kelulusan";
+let selisih=buka-sekarang
 
-document.getElementById("cek").style.display=
-"block";
+if(selisih<=0){
 
-}else{
+document.getElementById("judul")
+.innerHTML="Cek Kelulusan"
 
-document.getElementById("judul").innerHTML=
-"⏳ Pengumuman belum dibuka";
+document.getElementById("countdown")
+.style.display="none"
+
+document.getElementById("cek")
+.style.display="block"
+
+return
 
 }
 
+let hari=Math.floor(selisih/1000/60/60/24)
+
+let jam=Math.floor(
+(selisih/1000/60/60)%24)
+
+let menit=Math.floor(
+(selisih/1000/60)%60)
+
+let detik=Math.floor(
+(selisih/1000)%60)
+
+document.getElementById(
+"countdown"
+).innerHTML=`
+
+<div class="count">
+${hari} Hari
+${jam} Jam
+${menit} Menit
+${detik} Detik
+</div>
+
+`
+
 }
+
+setInterval(update,1000)
+
+update()
+
+
 
 function cek(){
 
-let n=document.getElementById("nisn").value.trim();
+let n=
+document.getElementById("nisn").value
 
-let h=document.getElementById("hasil");
+let h=
+document.getElementById("hasil")
 
 if(data[n]){
 
 h.innerHTML=`
 
-<div style="
-margin-top:20px;
-padding:25px;
-border-radius:20px;
-background:linear-gradient(135deg,#16a34a,#2563eb);
-color:white">
+<div class='sukses'>
 
-<h1>🎉 SELAMAT 🎉</h1>
+<h1>
+🎉 SELAMAT 🎉
+</h1>
 
-<h2>ANDA DINYATAKAN LULUS</h2>
+<h2>
+${data[n].nama}
+</h2>
 
-<hr>
+<h3>
+Kelas ${data[n].kelas}
+</h3>
 
-<h3>${data[n].nama}</h3>
-
-<p>NISN : ${n}</p>
-
-<p>Kelas : ${data[n].kelas}</p>
-
-<p>Status:
-<b style="color:yellow">
+<h1>
 ${data[n].status}
-</b></p>
+</h1>
 
-<button onclick="window.print()">
+<p>
+Selamat atas kelulusan Anda.
+Semoga sukses ke jenjang berikutnya.
+</p>
 
-📄 Cetak / Simpan
-
+<button onclick='window.print()'>
+Download SKL
 </button>
 
 </div>
 
-`;
+`
 
 }else{
 
-h.innerHTML="❌ Data tidak ditemukan";
+h.innerHTML=`
+<h2 style='color:red'>
+Data tidak ditemukan
+</h2>
+`
 
 }
 
 }
-
-update();
-setInterval(update,1000);
 
 </script>
+
+</body>
+</html>
