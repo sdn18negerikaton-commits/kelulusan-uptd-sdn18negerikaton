@@ -1,92 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Pengumuman Kelulusan UPTD SDN 18 Negeri Katon</title>
+<title>UPTD SDN 18 Negeri Katon - Kelulusan</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
-margin:0;
-padding:0;
 font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#04142f,#08285d);
+background:linear-gradient(135deg,#04142f,#0a2f73);
 color:white;
 text-align:center;
+padding:20px;
 }
 
 .container{
 max-width:900px;
 margin:auto;
-padding:20px;
 }
 
 .logo{
 width:140px;
-margin-top:20px;
-border-radius:50%;
-box-shadow:0 0 30px rgba(255,255,255,.4);
+height:auto;
+margin:20px auto;
+display:block;
+}
+
+h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:22px;
+opacity:.9;
+margin-bottom:25px;
 }
 
 .card{
 background:white;
-color:black;
+color:#222;
 padding:30px;
 border-radius:25px;
-margin-top:25px;
-box-shadow:0 10px 40px rgba(0,0,0,.3);
+margin-top:30px;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+#countdown{
+font-size:32px;
+font-weight:bold;
+color:#0a2f73;
+margin-top:15px;
 }
 
 input{
-width:80%;
-padding:16px;
-font-size:20px;
-border-radius:15px;
+width:90%;
+padding:15px;
+font-size:18px;
 border:2px solid #ddd;
+border-radius:12px;
+margin-top:15px;
 }
 
 button{
-padding:16px 30px;
-background:#1565c0;
+margin-top:15px;
+padding:14px 25px;
 border:none;
+border-radius:12px;
+background:#1565c0;
 color:white;
 font-size:18px;
-border-radius:15px;
 cursor:pointer;
-margin-top:15px;
 }
 
 button:hover{
 background:#0d47a1;
 }
 
-#hasil{
-margin-top:20px;
-}
-
 .sukses{
+margin-top:20px;
+padding:25px;
+border-radius:20px;
 background:linear-gradient(135deg,#16a34a,#2563eb);
-padding:30px;
-border-radius:25px;
 color:white;
-box-shadow:0 15px 30px rgba(0,0,0,.3);
 }
 
 footer{
 margin-top:50px;
-padding:30px;
-font-size:18px;
-opacity:.9;
+opacity:.8;
 }
-
-.count{
-font-size:35px;
-font-weight:bold;
-margin:20px;
-}
-
 </style>
 </head>
 
@@ -94,39 +98,29 @@ margin:20px;
 
 <div class="container">
 
-<img class="logo"
-.logo{
-width:160px;
-height:auto;
-margin-top:20px;
-filter:drop-shadow(0 0 20px rgba(255,255,255,.5));
-}
+<img src="./logo.png" class="logo">
+
 <h1>🎓 UPTD SDN 18 NEGERI KATON</h1>
 
-<h2>Portal Pengumuman Kelulusan</h2>
-
-<p>Tahun Ajaran 2025/2026</p>
+<div class="subtitle">
+Portal Pengumuman Kelulusan<br>
+Tahun Ajaran 2025/2026
+</div>
 
 <p>
-Kepala Sekolah: SUJOKO S.Pd SD
-<br>
-NIP:197604082009021002
+Kepala Sekolah: SUJOKO S.Pd SD<br>
+NIP: 197604082009021002
 </p>
-
 
 <div class="card">
 
-<h2 id="judul">
-Pengumuman Belum Dibuka
-</h2>
+<h2 id="judul">Pengumuman Belum Dibuka</h2>
 
 <div id="countdown"></div>
 
-<div id="cek" style="display:none">
+<div id="cekArea" style="display:none">
 
-<input
-id="nisn"
-placeholder="Masukkan NISN">
+<input id="nisn" placeholder="Masukkan NISN">
 
 <br>
 
@@ -140,21 +134,15 @@ Cek Kelulusan
 
 </div>
 
-
 <footer>
-
-©2026 Portal Pengumuman Kelulusan
-<br>
-UPTD SDN 18 NEGERI KATON
-
+© 2026 UPTD SDN 18 Negeri Katon
 </footer>
 
 </div>
 
-
 <script>
 
-const buka=new Date("2026-06-05T08:00:00")
+const buka = new Date("2026-06-05T08:00:00");
 
 const data={
 
@@ -174,121 +162,73 @@ status:"LULUS"
 nama:"Aqila Jihan Balqis",
 kelas:"6",
 status:"LULUS"
-},
-
-"3134779420":{
-nama:"Candra Halim",
-kelas:"6",
-status:"LULUS"
 }
 
-}
-
-
+};
 
 function update(){
 
-let sekarang=new Date()
+let now=new Date();
+let s=buka-now;
 
-let selisih=buka-sekarang
+if(s<=0){
 
-if(selisih<=0){
+document.getElementById("judul").innerHTML="Cek Kelulusan";
 
-document.getElementById("judul")
-.innerHTML="Cek Kelulusan"
+document.getElementById("countdown").style.display="none";
 
-document.getElementById("countdown")
-.style.display="none"
+document.getElementById("cekArea").style.display="block";
 
-document.getElementById("cek")
-.style.display="block"
-
-return
+return;
 
 }
 
-let hari=Math.floor(selisih/1000/60/60/24)
+let h=Math.floor(s/1000/60/60/24);
+let j=Math.floor((s/1000/60/60)%24);
+let m=Math.floor((s/1000/60)%60);
+let d=Math.floor((s/1000)%60);
 
-let jam=Math.floor(
-(selisih/1000/60/60)%24)
-
-let menit=Math.floor(
-(selisih/1000/60)%60)
-
-let detik=Math.floor(
-(selisih/1000)%60)
-
-document.getElementById(
-"countdown"
-).innerHTML=`
-
-<div class="count">
-${hari} Hari
-${jam} Jam
-${menit} Menit
-${detik} Detik
-</div>
-
-`
+document.getElementById("countdown").innerHTML=
+`${h} Hari ${j} Jam ${m} Menit ${d} Detik`;
 
 }
 
-setInterval(update,1000)
-
-update()
-
-
+setInterval(update,1000);
+update();
 
 function cek(){
 
-let n=
-document.getElementById("nisn").value
+let n=document.getElementById("nisn").value;
 
-let h=
-document.getElementById("hasil")
+let h=document.getElementById("hasil");
 
 if(data[n]){
 
 h.innerHTML=`
 
-<div class='sukses'>
+<div class="sukses">
 
-<h1>
-🎉 SELAMAT 🎉
-</h1>
+<h1>🎉 SELAMAT 🎉</h1>
 
-<h2>
-${data[n].nama}
-</h2>
+<h2>${data[n].nama}</h2>
 
-<h3>
-Kelas ${data[n].kelas}
-</h3>
+<p>Kelas ${data[n].kelas}</p>
 
-<h1>
-${data[n].status}
-</h1>
+<h1>${data[n].status}</h1>
 
-<p>
-Selamat atas kelulusan Anda.
-Semoga sukses ke jenjang berikutnya.
-</p>
+<p>Selamat dan sukses ke jenjang berikutnya.</p>
 
-<button onclick='window.print()'>
+<button onclick="window.print()">
 Download SKL
 </button>
 
 </div>
 
-`
+`;
 
 }else{
 
-h.innerHTML=`
-<h2 style='color:red'>
-Data tidak ditemukan
-</h2>
-`
+h.innerHTML="<h3 style='color:red'>Data tidak ditemukan</h3>";
 
 }
 
