@@ -91,16 +91,71 @@ document.getElementById("cek").style.display="block";
 setInterval(update,1000);
 
 function cek(){
+function cek(){
+
 let n=document.getElementById("nisn").value;
 let h=document.getElementById("hasil");
 
 if(data[n]){
-h.innerHTML="<h2>"+data[n].nama+"</h2><p>Kelas "+data[n].kelas+"</p><b>"+data[n].status+"</b>";
-}else{
-h.innerHTML="Data tidak ditemukan";
-}
-}
-</script>
 
-</body>
-</html>
+h.innerHTML=`
+<div style="
+margin-top:20px;
+padding:25px;
+border-radius:20px;
+background:linear-gradient(135deg,#16a34a,#2563eb);
+color:white;
+box-shadow:0 0 20px rgba(0,0,0,.3)
+">
+
+<h1>🎉 SELAMAT 🎉</h1>
+
+<h2>ANDA DINYATAKAN LULUS</h2>
+
+<hr>
+
+<h3>${data[n].nama}</h3>
+
+<p>NISN : ${n}</p>
+
+<p>Kelas : ${data[n].kelas}</p>
+
+<p>Status :
+<b style="color:yellow">
+${data[n].status}
+</b>
+</p>
+
+<button onclick="window.print()"
+style="
+padding:12px;
+border:none;
+border-radius:10px;
+background:white;
+font-weight:bold;
+margin-top:15px">
+
+📄 Cetak / Simpan Hasil
+
+</button>
+
+</div>
+`;
+
+}else{
+
+h.innerHTML=`
+<div style="
+background:#7f1d1d;
+padding:20px;
+border-radius:15px;
+margin-top:20px">
+
+❌ Data tidak ditemukan
+
+</div>
+`;
+
+}
+
+}
