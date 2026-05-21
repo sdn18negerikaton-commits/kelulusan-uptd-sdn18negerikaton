@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pengumuman Kelulusan UPTD SDN 18 Negeri Katon</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:white;
+text-align:center;
+padding:30px
+}
+.card{
+background:white;
+color:black;
+max-width:600px;
+margin:auto;
+padding:20px;
+border-radius:20px
+}
+input{
+width:90%;
+padding:12px;
+margin:10px;
+}
+button{
+padding:12px 20px;
+background:#2563eb;
+color:white;
+border:none;
+border-radius:10px
+}
+</style>
+</head>
+<body>
+
+<h1>UPTD SDN 18 NEGERI KATON</h1>
+<h3>Pengumuman Kelulusan</h3>
+
+<div class="card">
+<h2 id="judul">Pengumuman belum dibuka</h2>
+
+<div id="cek" style="display:none;">
+<input id="nisn" placeholder="Masukkan NISN">
+<br>
+<button onclick="cek()">Cek Kelulusan</button>
+<div id="hasil"></div>
+</div>
+</div>
+
+<script>
+const buka = new Date("2026-06-14T08:00:00");
+
+const data = {
+"132795839":{
+nama:"AISY FITHRIYAH NURAINI",
+kelas:"6",
+status:"LULUS"
+},
+"132646830":{
+nama:"ALFERO FACHRINSYAH ALBAR",
+kelas:"6",
+status:"LULUS"
+}
+};
+
+function update(){
+if(new Date()>=buka){
+document.getElementById("judul").innerHTML="Cek Kelulusan";
+document.getElementById("cek").style.display="block";
+}
+}
+setInterval(update,1000);
+
+function cek(){
+let n=document.getElementById("nisn").value;
+let h=document.getElementById("hasil");
+
+if(data[n]){
+h.innerHTML="<h2>"+data[n].nama+"</h2><p>Kelas "+data[n].kelas+"</p><b>"+data[n].status+"</b>";
+}else{
+h.innerHTML="Data tidak ditemukan";
+}
+}
+</script>
+
+</body>
+</html>
