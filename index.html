@@ -50,39 +50,31 @@ border-radius:10px
 </div>
 
 <script>
+
 const buka = new Date("2025-01-01T08:00:00");
 
 const data = {
-const data = {
-"132795839":{nama:"AISY FITHRIYAH NURAINI",kelas:"6",status:"LULUS"},
-"132646830":{nama:"ALFERO FACHRINSYAH ALBAR",kelas:"6",status:"LULUS"},
-"3147739871":{nama:"AQILA JIHAN BALQIS",kelas:"6",status:"LULUS"},
-"3134779420":{nama:"CANDRA HALIM",kelas:"6",status:"LULUS"},
-"133262548":{nama:"DZAKI ALFATAN",kelas:"6",status:"LULUS"},
-"143380273":{nama:"FACHRI ZAFRAN APRILLIO",kelas:"6",status:"LULUS"},
-"139796394":{nama:"FADIL TRIYADI",kelas:"6",status:"LULUS"},
-"133361197":{nama:"FAUZAN SEPTIANSYAH",kelas:"6",status:"LULUS"},
-"149558587":{nama:"GILANG PRATAMA",kelas:"6",status:"LULUS"},
-"136916400":{nama:"HAIKAL TRI SETIAWAN",kelas:"6",status:"LULUS"},
-"133267300":{nama:"INTAN MAHARANI",kelas:"6",status:"LULUS"},
-"131424017":{nama:"IRFAN BAIHAQI",kelas:"6",status:"LULUS"},
-"139574178":{nama:"JANEETA KAMILIA ALZENA",kelas:"6",status:"LULUS"},
-"143826601":{nama:"JENITA JANET",kelas:"6",status:"LULUS"},
-"147572973":{nama:"LUTVIA AZ ZAHRA",kelas:"6",status:"LULUS"},
-"3141274911":{nama:"MUTIARA RAHMA DANI",kelas:"6",status:"LULUS"},
-"132179454":{nama:"NAFFI ALUNA",kelas:"6",status:"LULUS"},
-"3136152528":{nama:"NAZWA AURELIA",kelas:"6",status:"LULUS"},
-"144289200":{nama:"NESYA NABILA",kelas:"6",status:"LULUS"},
-"137289020":{nama:"NONA LAYLA AZARENKHA",kelas:"6",status:"LULUS"},
-"148997328":{nama:"RAYHAN WIJAYA PRATAMA",kelas:"6",status:"LULUS"},
-"137930116":{nama:"RIFHAT HAFIZH",kelas:"6",status:"LULUS"},
-"134292782":{nama:"RIZKI ADITYA",kelas:"6",status:"LULUS"},
-"148578949":{nama:"TRISYA AINAFIQAH",kelas:"6",status:"LULUS"}
-};
+
+"132795839":{
+nama:"AISY FITHRIYAH NURAINI",
+kelas:"6",
+status:"LULUS"
+},
+
+"132646830":{
+nama:"ALFERO FACHRINSYAH ALBAR",
+kelas:"6",
+status:"LULUS"
+},
+
+"3147739871":{
+nama:"Aqila Jihan Balqis",
+kelas:"6",
+status:"LULUS"
 }
+
 };
 
-function update(){
 function update(){
 
 if(new Date()>=buka){
@@ -95,36 +87,29 @@ document.getElementById("cek").style.display=
 
 }else{
 
-let sisa=buka-new Date();
-
-let hari=Math.floor(sisa/86400000);
-
 document.getElementById("judul").innerHTML=
-"⏳ Pengumuman dibuka "+hari+" hari lagi";
+"⏳ Pengumuman belum dibuka";
 
 }
 
 }
-}
-}
-setInterval(update,1000);
 
-function cek()
+function cek(){
 
-let n=document.getElementById("nisn").value;
+let n=document.getElementById("nisn").value.trim();
+
 let h=document.getElementById("hasil");
 
 if(data[n]){
 
 h.innerHTML=`
+
 <div style="
 margin-top:20px;
 padding:25px;
 border-radius:20px;
 background:linear-gradient(135deg,#16a34a,#2563eb);
-color:white;
-box-shadow:0 0 20px rgba(0,0,0,.3)
-">
+color:white">
 
 <h1>🎉 SELAMAT 🎉</h1>
 
@@ -138,42 +123,30 @@ box-shadow:0 0 20px rgba(0,0,0,.3)
 
 <p>Kelas : ${data[n].kelas}</p>
 
-<p>Status :
+<p>Status:
 <b style="color:yellow">
 ${data[n].status}
-</b>
-</p>
+</b></p>
 
-<button onclick="window.print()"
-style="
-padding:12px;
-border:none;
-border-radius:10px;
-background:white;
-font-weight:bold;
-margin-top:15px">
+<button onclick="window.print()">
 
-📄 Cetak / Simpan Hasil
+📄 Cetak / Simpan
 
 </button>
 
 </div>
+
 `;
 
 }else{
 
-h.innerHTML=`
-<div style="
-background:#7f1d1d;
-padding:20px;
-border-radius:15px;
-margin-top:20px">
-
-❌ Data tidak ditemukan
-
-</div>
-`;
+h.innerHTML="❌ Data tidak ditemukan";
 
 }
 
 }
+
+update();
+setInterval(update,1000);
+
+</script>
