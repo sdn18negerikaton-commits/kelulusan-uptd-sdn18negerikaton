@@ -173,218 +173,43 @@ Cek Kelulusan
 
 <script>
 
-const buka=
-new Date("2026-06-02T09:30:00");
-
 const data={
 
-"132795839":{
-nama:"AISY FITHRIYAH NURAINI",
-kelas:"6",
-status:"LULUS"
-},
-
-"132646830":{
-nama:"ALFERO FACHRINSYAH ALBAR",
-kelas:"6",
-status:"LULUS"
-},
-
-"3147739871":{
-nama:"AQILA JIHAN BALQIS",
-kelas:"6",
-status:"LULUS"
-},
-
-"3134779420":{
-nama:"CANDRA HALIM",
-kelas:"6",
-status:"LULUS"
-},
-
-"133262548":{
-nama:"DZAKI ALFATAN",
-kelas:"6",
-status:"LULUS"
-},
-
-"143380273":{
-nama:"FACHRI ZAFRAN APRILLIO",
-kelas:"6",
-status:"LULUS"
-},
-
-"139796394":{
-nama:"FADIL TRIYADI",
-kelas:"6",
-status:"LULUS"
-},
-
-"133361197":{
-nama:"FAUZAN SEPTIANSYAH",
-kelas:"6",
-status:"LULUS"
-},
-
-"149558587":{
-nama:"GILANG PRATAMA",
-kelas:"6",
-status:"LULUS"
-},
-
-"136916400":{
-nama:"HAIKAL TRI SETIAWAN",
-kelas:"6",
-status:"LULUS"
-},
-
-"133267300":{
-nama:"INTAN MAHARANI",
-kelas:"6",
-status:"LULUS"
-},
-
-"131424017":{
-nama:"IRFAN BAIHAQI",
-kelas:"6",
-status:"LULUS"
-},
-
-"139574178":{
-nama:"JANEETA KAMILIA ALZENA",
-kelas:"6",
-status:"LULUS"
-},
-
-"143826601":{
-nama:"JENITA JANET",
-kelas:"6",
-status:"LULUS"
-},
-
-"147572973":{
-nama:"LUTVIA AZ ZAHRA",
-kelas:"6",
-status:"LULUS"
-},
-
-"3141274911":{
-nama:"MUTIARA RAHMA DANI",
-kelas:"6",
-status:"LULUS"
-},
-
-"132179454":{
-nama:"NAFFI ALUNA",
-kelas:"6",
-status:"LULUS"
-},
-
-"3136152528":{
-nama:"NAZWA AURELIA",
-kelas:"6",
-status:"LULUS"
-},
-
-"144289200":{
-nama:"NESYA NABILA",
-kelas:"6",
-status:"LULUS"
-},
-
-"137289020":{
-nama:"NONA LAYLA AZARENKHA",
-kelas:"6",
-status:"LULUS"
-},
-
-"148997328":{
-nama:"RAYHAN WIJAYA PRATAMA",
-kelas:"6",
-status:"LULUS"
-},
-
-"137930116":{
-nama:"RIFHAT HAFIZH",
-kelas:"6",
-status:"LULUS"
-},
-
-"134292782":{
-nama:"RIZKI ADITYA",
-kelas:"6",
-status:"LULUS"
-},
-
-"148578949":{
-nama:"TRISYA AINAFIQAH",
-kelas:"6",
-status:"LULUS"
-}
+"132795839":{nama:"AISY FITHRIYAH NURAINI",kelas:"6",status:"LULUS"},
+"132646830":{nama:"ALFERO FACHRINSYAH ALBAR",kelas:"6",status:"LULUS"},
+"3147739871":{nama:"AQILA JIHAN BALQIS",kelas:"6",status:"LULUS"},
+"3134779420":{nama:"CANDRA HALIM",kelas:"6",status:"LULUS"},
+"133262548":{nama:"DZAKI ALFATAN",kelas:"6",status:"LULUS"},
+"143380273":{nama:"FACHRI ZAFRAN APRILLIO",kelas:"6",status:"LULUS"},
+"139796394":{nama:"FADIL TRIYADI",kelas:"6",status:"LULUS"},
+"133361197":{nama:"FAUZAN SEPTIANSYAH",kelas:"6",status:"LULUS"},
+"149558587":{nama:"GILANG PRATAMA",kelas:"6",status:"LULUS"},
+"136916400":{nama:"HAIKAL TRI SETIAWAN",kelas:"6",status:"LULUS"},
+"133267300":{nama:"INTAN MAHARANI",kelas:"6",status:"LULUS"},
+"131424017":{nama:"IRFAN BAIHAQI",kelas:"6",status:"LULUS"},
+"139574178":{nama:"JANEETA KAMILIA ALZENA",kelas:"6",status:"LULUS"},
+"143826601":{nama:"JENITA JANET",kelas:"6",status:"LULUS"},
+"147572973":{nama:"LUTVIA AZ ZAHRA",kelas:"6",status:"LULUS"},
+"3141274911":{nama:"MUTIARA RAHMA DANI",kelas:"6",status:"LULUS"},
+"132179454":{nama:"NAFFI ALUNA",kelas:"6",status:"LULUS"},
+"3136152528":{nama:"NAZWA AURELIA",kelas:"6",status:"LULUS"},
+"144289200":{nama:"NESYA NABILA",kelas:"6",status:"LULUS"},
+"137289020":{nama:"NONA LAYLA AZARENKHA",kelas:"6",status:"LULUS"},
+"148997328":{nama:"RAYHAN WIJAYA PRATAMA",kelas:"6",status:"LULUS"},
+"137930116":{nama:"RIFHAT HAFIZH",kelas:"6",status:"LULUS"},
+"134292782":{nama:"RIZKI ADITYA",kelas:"6",status:"LULUS"},
+"148578949":{nama:"TRISYA AINAFIQAH",kelas:"6",status:"LULUS"}
 
 };
 
-
-function update(){
-
-let now=new Date();
-
-let s=buka-now;
-
-if(s<=0){
-
-document
-.getElementById("judul")
-.innerHTML="🎓 Cek Kelulusan";
-
-document
-.getElementById("countdown")
-.style.display="none";
-
-document
-.getElementById("cekArea")
-.style.display="block";
-
-return;
-
-}
-
-let h=Math.floor(
-s/1000/60/60/24);
-
-let j=Math.floor(
-(s/1000/60/60)%24);
-
-let m=Math.floor(
-(s/1000/60)%60);
-
-let d=Math.floor(
-(s/1000)%60);
-
-document
-.getElementById("countdown")
-.innerHTML=
-
-`${h} Hari ${j} Jam ${m} Menit ${d} Detik`;
-
-}
-
-setInterval(update,1000);
-
-update();
-
+document.getElementById("judul").innerHTML="🎓 Cek Kelulusan";
+document.getElementById("countdown").style.display="none";
+document.getElementById("cekArea").style.display="block";
 
 function cek(){
 
-let n=
-document
-.getElementById("nisn")
-.value.trim();
-
-let h=
-document
-.getElementById("hasil");
-
+let n=document.getElementById("nisn").value.trim();
+let h=document.getElementById("hasil");
 
 if(data[n]){
 
@@ -392,26 +217,15 @@ h.innerHTML=`
 
 <div class="sukses">
 
-<h1>
-🎉 SELAMAT 🎉
-</h1>
+<h1>🎉 SELAMAT 🎉</h1>
 
-<h2>
-${data[n].nama}
-</h2>
+<h2>${data[n].nama}</h2>
 
-<p>
-Kelas ${data[n].kelas}
-</p>
+<p>Kelas ${data[n].kelas}</p>
 
-<h1>
-${data[n].status}
-</h1>
+<h1>${data[n].status}</h1>
 
-<p>
-Selamat atas kelulusan Anda.
-Semoga sukses ke jenjang berikutnya.
-</p>
+<p>Selamat atas kelulusan Anda.</p>
 
 <button onclick="window.print()">
 📄 Download SKL
@@ -423,8 +237,7 @@ Semoga sukses ke jenjang berikutnya.
 
 }else{
 
-h.innerHTML=
-"<h3 style='color:red'>❌ Data tidak ditemukan</h3>";
+h.innerHTML="<h3 style='color:red'>❌ Data tidak ditemukan</h3>";
 
 }
 
